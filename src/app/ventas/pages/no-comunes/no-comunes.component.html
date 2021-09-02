@@ -1,0 +1,89 @@
+<div class="text-layout">
+    <h1>Pipes no tan comunes</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente en el CommonModule
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col">
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <p>
+                Saludos {{nameP}}, ha sido {{sex | i18nSelect: invMap}} a Isengard.
+            </p>
+
+            <button 
+                pButton 
+                type="button" 
+                label="Cambiar Personaje"
+                class="p-button-primary p-button-rounded"
+                icon="pi pi-angle-double-right"
+                iconPos="right"
+                (click)="cambiarPersonaje()"
+            ></button>
+        </p-fieldset>
+    </div>
+
+    <div class="col">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            <p>
+                Actualmente {{miembros.length | i18nPlural:miembrosMap}}
+            </p>
+            <button 
+                pButton 
+                type="button" 
+                label="Borrar Personaje"
+                class="p-button-danger p-button-rounded"
+                icon="pi pi-times"
+                iconPos="right"
+                (click)="borrarPersonaje()"
+            ></button>
+        </p-fieldset>
+    </div>
+
+    <div class="col">
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+            <b>Original</b>
+            <pre>{{miembros}}</pre>
+
+            <b>slice:0:2</b>
+            <pre>{{miembros | slice:0:2}}</pre>
+
+            <b>slice:1:2</b>
+            <pre>{{miembros | slice:1:2}}</pre>
+
+            <b>slice:1:3</b>
+            <pre>{{miembros | slice:1:3}}</pre>
+
+            <b>slice:3:4</b>
+            <pre>{{miembros | slice:3:4}}</pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col">
+        <p-fieldset legend="JsonPipe" [toggleable]="true">
+            <pre>{{heroes | json}}</pre>
+        </p-fieldset>   
+    </div>
+
+    <div class="col">
+        <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+            <ul>
+                <li *ngFor="let item of persona | keyvalue">
+                    <b>{{item.key | titlecase}}: {{item.value}}</b>
+                </li>
+            </ul>
+        </p-fieldset>   
+    </div>
+
+    <div class="col">
+        <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+            <pre *ngIf="!(miObservable | async)">Resolviendo observable</pre>
+            <pre>{{miObservable | async}}</pre>
+
+            <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa</pre>
+            <pre>{{valorPromesa | async}}</pre>
+        </p-fieldset>   
+    </div>
+</div>
+
